@@ -19,6 +19,14 @@
     return self;
 }
 
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier labelText:(NSString *)label andKey:(NSString *) key {
+  self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+  if (self) {
+    self.textLabel.text = label;
+  }
+  return self;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
