@@ -10,4 +10,6 @@
 
 @interface FCSwitchCell : UITableViewCell
 
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier labelText:(NSString *)label andKey:(NSString *) key;
+
 @end

@@ -8,6 +8,8 @@
 
 #import "FCViewController.h"
 
+#import "FCSwitchCell.h"
+
 @interface FCViewController ()
 
 @end
@@ -24,6 +26,15 @@
 {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return [[FCSwitchCell alloc] init];
 }
 
 @end
