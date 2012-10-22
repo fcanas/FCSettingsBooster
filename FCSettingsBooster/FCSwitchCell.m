@@ -11,6 +11,7 @@
 @interface FCSwitchCell ()
 
 @property (nonatomic, retain) NSString *key;
+@property (nonatomic, assign) UISwitch *theSwitch;
 
 @end
 
@@ -21,6 +22,8 @@
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
     self.accessoryView = [[UISwitch alloc] init];
+    self.theSwitch = (UISwitch *)self.accessoryView;
+    [_theSwitch addTarget:self action:@selector(setDefaults) forControlEvents:UIControlEventValueChanged];
   }
   return self;
 }
@@ -30,15 +33,30 @@
   if (self) {
     self.textLabel.text = label;
     self.key = key;
+    [self fetchDefaults];
   }
   return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-  [super setSelected:selected animated:animated];
-  
-  // Configure the view for the selected state
+- (void)fetchDefaults {
+  [[NSUserDefaults standardUserDefaults] synchronize];
+  _theSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:_key];
 }
+
+- (void)setDefaults {
+  [[NSUserDefaults standardUserDefaults] setBool:_theSwitch.on forKey:_key];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)value {
+  return _theSwitch.on;
+}
+
+- (void)setValue:(BOOL)newValue {
+  _theSwitch.on = newValue;
+  [self setDefaults];
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {}
 
 @end

@@ -34,7 +34,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return [[FCSwitchCell alloc] init];
+  return [[FCSwitchCell alloc] initWithReuseIdentifier:@"b" labelText:@"My Preference" andKey:@"preferenceKey"];
 }
 
 @end
