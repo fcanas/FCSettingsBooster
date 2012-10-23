@@ -8,6 +8,9 @@
 
 #import "FCColorPickerCell.h"
 
+#import <iOS-Color-Picker/FCColorSwatchView.h>
+#import "NSUserDefaults+UIColor.h"
+
 @implementation FCColorPickerCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -23,6 +26,8 @@
   self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
   if (self) {
     self.textLabel.text = label;
+    self.accessoryView = [[FCColorSwatchView alloc] initWithFrame:CGRectMake(0, 0, 79, 27)];
+    ((FCColorSwatchView *)self.accessoryView).color = [[NSUserDefaults standardUserDefaults] colorForKey:key];
   }
   return self;
 }

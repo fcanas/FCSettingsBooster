@@ -9,6 +9,7 @@
 #import "FCViewController.h"
 
 #import "FCSwitchCell.h"
+#import "FCColorPickerCell.h"
 
 @interface FCViewController ()
 
@@ -30,11 +31,16 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 1;
+  return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return [[FCSwitchCell alloc] initWithReuseIdentifier:@"b" labelText:@"My Preference" andKey:@"preferenceKey"];
+  if (indexPath.row == 1) {
+    return [[FCSwitchCell alloc] initWithReuseIdentifier:@"b" labelText:@"My Preference" andKey:@"preferenceKey"];
+  } else {
+    return [[FCColorPickerCell alloc] initWithReuseIdentifier:@"b" labelText:@"My Preference" andKey:@"colorPreferenceKey"];
+  }
+  
 }
 
 @end
