@@ -11,15 +11,23 @@
 #import <iOS-Color-Picker/FCColorSwatchView.h>
 #import "NSUserDefaults+UIColor.h"
 
+@interface FCColorPickerCell () {
+  NSString *_key;
+}
+
+@end
+
 @implementation FCColorPickerCell
+
+@synthesize key=_key;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+  self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+  if (self) {
+    // Initialization code
+  }
+  return self;
 }
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier labelText:(NSString *)label andKey:(NSString *) key {
@@ -27,16 +35,14 @@
   if (self) {
     self.textLabel.text = label;
     self.accessoryView = [[FCColorSwatchView alloc] initWithFrame:CGRectMake(0, 0, 79, 27)];
-    ((FCColorSwatchView *)self.accessoryView).color = [[NSUserDefaults standardUserDefaults] colorForKey:key];
+    ((FCColorSwatchView *)self.accessoryView).color = [[NSUserDefaults standardUserDefaults] colorForKey:_key];
   }
   return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+//  [super setSelected:selected animated:animated];
 }
 
 @end

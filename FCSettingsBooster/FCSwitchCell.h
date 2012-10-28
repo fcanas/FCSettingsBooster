@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FCBoosterCell.h"
 
-@interface FCSwitchCell : UITableViewCell
+@interface FCSwitchCell : UITableViewCell <FCBoosterCell>
 
 @property BOOL value;
-
-- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier labelText:(NSString *)label andKey:(NSString *) key;
 
 @end

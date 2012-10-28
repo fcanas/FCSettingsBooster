@@ -22,6 +22,9 @@
 		E7B46A8416350F410057592F /* NSUserDefaults+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B46A8316350F410057592F /* NSUserDefaults+UIColor.m */; };
 		E7B46A8516350F410057592F /* NSUserDefaults+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B46A8316350F410057592F /* NSUserDefaults+UIColor.m */; };
 		E7B46A87163627070057592F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B46A86163627070057592F /* libPods.a */; };
+		E7B46AE2163CE5C60057592F /* FCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B46AE1163CE5C60057592F /* FCSettingsViewController.m */; };
+		E7B46AE3163CE5C60057592F /* FCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B46AE1163CE5C60057592F /* FCSettingsViewController.m */; };
+		E7B46AE6163CE6250057592F /* FCSettingsViewControllerSpec.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7B46AE4163CE6250057592F /* FCSettingsViewControllerSpec.mm */; };
 		E7B58C6E1634D98C00967966 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B58C6D1634D98C00967966 /* UIKit.framework */; };
 		E7B58C701634D98C00967966 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B58C6F1634D98C00967966 /* Foundation.framework */; };
 		E7B58C721634D98C00967966 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B58C711634D98C00967966 /* CoreGraphics.framework */; };
@@ -53,6 +56,10 @@
 		E7B46A8316350F410057592F /* NSUserDefaults+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+UIColor.m"; sourceTree = "<group>"; };
 		E7B46A86163627070057592F /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "../Pods/build/Release-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		E7B46A8916365AF40057592F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E7B46AE0163CE5C60057592F /* FCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCSettingsViewController.h; sourceTree = "<group>"; };
+		E7B46AE1163CE5C60057592F /* FCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCSettingsViewController.m; sourceTree = "<group>"; };
+		E7B46AE4163CE6250057592F /* FCSettingsViewControllerSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FCSettingsViewControllerSpec.mm; path = Specs/FCSettingsViewControllerSpec.mm; sourceTree = "<group>"; };
+		E7B46AEB163CFAEC0057592F /* FCBoosterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCBoosterCell.h; sourceTree = "<group>"; };
 		E7B58C691634D98C00967966 /* FCSettingsBooster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FCSettingsBooster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B58C6D1634D98C00967966 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E7B58C6F1634D98C00967966 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -110,6 +117,7 @@
 				E7B46A631634F2F90057592F /* Cedar-iOS.framework */,
 				E7B46A5B1634F2F80057592F /* Supporting Files */,
 				E7B46A8016350E600057592F /* FCColorPickerCellSpec.mm */,
+				E7B46AE4163CE6250057592F /* FCSettingsViewControllerSpec.mm */,
 			);
 			path = Specs;
 			sourceTree = "<group>";
@@ -197,6 +205,9 @@
 				E7B46A7C16350E160057592F /* FCColorPickerCell.m */,
 				E7B46A8216350F410057592F /* NSUserDefaults+UIColor.h */,
 				E7B46A8316350F410057592F /* NSUserDefaults+UIColor.m */,
+				E7B46AE0163CE5C60057592F /* FCSettingsViewController.h */,
+				E7B46AE1163CE5C60057592F /* FCSettingsViewController.m */,
+				E7B46AEB163CFAEC0057592F /* FCBoosterCell.h */,
 			);
 			path = FCSettingsBooster;
 			sourceTree = "<group>";
@@ -333,6 +344,8 @@
 				E7B46A7E16350E160057592F /* FCColorPickerCell.m in Sources */,
 				E7B46A8116350E600057592F /* FCColorPickerCellSpec.mm in Sources */,
 				E7B46A8516350F410057592F /* NSUserDefaults+UIColor.m in Sources */,
+				E7B46AE3163CE5C60057592F /* FCSettingsViewController.m in Sources */,
+				E7B46AE6163CE6250057592F /* FCSettingsViewControllerSpec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +359,7 @@
 				E7C59A311634E6DD005FF824 /* FCSwitchCell.m in Sources */,
 				E7B46A7D16350E160057592F /* FCColorPickerCell.m in Sources */,
 				E7B46A8416350F410057592F /* NSUserDefaults+UIColor.m in Sources */,
+				E7B46AE2163CE5C60057592F /* FCSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,14 +8,17 @@
 
 #import "FCSwitchCell.h"
 
-@interface FCSwitchCell ()
+@interface FCSwitchCell () {
+  NSString *_key;
+}
 
-@property (nonatomic, retain) NSString *key;
 @property (nonatomic, assign) UISwitch *theSwitch;
 
 @end
 
 @implementation FCSwitchCell
+
+@synthesize key=_key;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

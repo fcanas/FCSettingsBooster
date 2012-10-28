@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FCBoosterCell.h"
 
-@interface FCColorPickerCell : UITableViewCell
-
-- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier labelText:(NSString *)label andKey:(NSString *) key;
+@interface FCColorPickerCell : UITableViewCell <FCBoosterCell>
 
 @end
