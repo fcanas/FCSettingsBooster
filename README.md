@@ -15,5 +15,5 @@ Giving a head start on implementing a settings view in iOS
 	* iCloud synchronization – (There are already a few options out there)
 	* Preview Cell – Custom cell that can subscribe to certain preference changes
 	* Slider Cell
-	* StoreKit Enabled cells – Perhaps to remove ads?
+	* StoreKit Enabled cells – *e.g* to remove ads?
 	
