@@ -12,8 +12,6 @@
 
 - (id)initWithConfiguration:(NSArray *) config andStyle:(UITableViewStyle)style;
 
-@end
-
-@protocol FCBoosterCell <NSObject>
+- (void)configure:(NSArray *) config;
 
 @end

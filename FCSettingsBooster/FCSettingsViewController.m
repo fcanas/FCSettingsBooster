@@ -8,6 +8,7 @@
 
 #import "FCSettingsViewController.h"
 #import "FCSwitchCell.h"
+#import "FCColorPickerCell.h"
 
 @interface FCSettingsViewController ()
 @property (nonatomic, strong) NSArray *configuration;
@@ -18,9 +19,15 @@
 - (id)initWithConfiguration:(NSArray *) config andStyle:(UITableViewStyle)style {
   self = [super initWithStyle:style];
   if (self) {
-    self.configuration = config;
+    [self configure:config];
   }
   return self;
+}
+
+- (void)configure:(NSArray *) config {
+  [self.tableView registerClass:[FCSwitchCell class] forCellReuseIdentifier:@"FCSwitchCell"];
+  [self.tableView registerClass:[FCColorPickerCell class] forCellReuseIdentifier:@"FCColorPickerCell"];
+  self.configuration = config;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,19 +53,20 @@
   NSDictionary *cellSettings = ((NSArray *)((NSDictionary *)_configuration[indexPath.section])[@"settings"])[indexPath.row];
   
   NSString *cellIdentifier = cellSettings[@"type"];
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+  UITableViewCell<FCBoosterCell> *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
   
-  NSArray *boosterSet = @[@"FCSwitchCell"];
+  NSArray *boosterSet = @[@"FCSwitchCell", @"FCColorPickerCell"];
   
   if (cell==nil) {
     for (NSString *s in boosterSet) {
       if ([s isEqualToString:cellIdentifier]) {
-        cell = [[NSClassFromString(s) alloc] initWithReuseIdentifier:s labelText:cellSettings[@"name"] andKey:@""];
+        cell = [[NSClassFromString(s) alloc] initWithReuseIdentifier:s labelText:cellSettings[@"name"] andKey:cellSettings[@"key"]];
       }
     }
-    
   }
   
+  cell.labelText = cellSettings[@"name"];
+  cell.key = cellSettings[@"key"];
   return cell;
 }
 

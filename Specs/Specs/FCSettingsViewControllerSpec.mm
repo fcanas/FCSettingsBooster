@@ -1,5 +1,6 @@
 #import "FCSettingsViewController.h"
 #import "FCSwitchCell.h"
+#import "FCColorPickerCell.h"
 
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
@@ -9,7 +10,7 @@ SPEC_BEGIN(FCSettingsViewControllerSpec)
 describe(@"FCSettingsViewController", ^{
   __block FCSettingsViewController *model;
   __block NSArray *settings;
-  __block UITableViewCell *cell;
+  __block UITableViewCell<FCBoosterCell> *cell;
   
   beforeEach(^{
     model = [[FCSettingsViewController alloc] init];
@@ -21,7 +22,10 @@ describe(@"FCSettingsViewController", ^{
       settings = @[
       @{@"sectionName": @"Basic",
       @"settings":
-      @[@{@"type":@"FCSwitchCell", @"name":@"The Preference", @"key":@"pref"}, @"two"]},
+      @[
+      @{@"type":@"FCSwitchCell", @"name":@"The Preference", @"key":@"pref"},
+      @"two"
+      ]},
       
       @{@"sectionName": @"Advanced",
       @"settings":
@@ -56,7 +60,7 @@ describe(@"FCSettingsViewController", ^{
       @[@{@"type":@"FCSwitchCell", @"name":@"The Preference", @"key":@"pref"}]}
       ];
       model = [[FCSettingsViewController alloc] initWithConfiguration:settings andStyle:UITableViewStyleGrouped];
-      cell = [model tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+      cell = (UITableViewCell<FCBoosterCell> *)[model tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     });
     
     it(@"should make switch cells", ^(){
@@ -65,6 +69,34 @@ describe(@"FCSettingsViewController", ^{
     
     it(@"should correctly label switch cells", ^(){
       [cell.textLabel.text isEqualToString:@"The Preference"] should be_truthy;
+    });
+    
+    it(@"should have the correct key", ^(){
+      [cell.key isEqualToString:@"pref"] should be_truthy;
+    });
+  });
+  
+  describe(@"color cells", ^(){
+    beforeEach(^(){
+      settings = @[
+      @{@"sectionName": @"Basic",
+      @"settings":
+      @[@{@"type":@"FCColorPickerCell", @"name":@"The Preference", @"key":@"pref"}]}
+      ];
+      model = [[FCSettingsViewController alloc] initWithConfiguration:settings andStyle:UITableViewStyleGrouped];
+      cell = (UITableViewCell<FCBoosterCell> *)[model tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    });
+    
+    it(@"should make color cells", ^(){
+      cell should be_instance_of([FCColorPickerCell class]);
+    });
+    
+    it(@"should correctly label switch cells", ^(){
+      [cell.textLabel.text isEqualToString:@"The Preference"] should be_truthy;
+    });
+    
+    it(@"should have the correct key", ^(){
+      [cell.key isEqualToString:@"pref"] should be_truthy;
     });
   });
   

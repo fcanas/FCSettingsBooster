@@ -10,6 +10,7 @@
 
 @interface FCSwitchCell () {
   NSString *_key;
+  NSString *_labelText;
 }
 
 @property (nonatomic, assign) UISwitch *theSwitch;
@@ -19,6 +20,7 @@
 @implementation FCSwitchCell
 
 @synthesize key=_key;
+@synthesize labelText=_labelText;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -39,6 +41,16 @@
     [self fetchDefaults];
   }
   return self;
+}
+
+- (void)setLabelText:(NSString *)labelText {
+  _labelText = labelText;
+  self.textLabel.text = labelText;
+}
+
+- (void)setKey:(NSString *)key {
+  _key = key;
+  [self fetchDefaults];
 }
 
 - (void)fetchDefaults {

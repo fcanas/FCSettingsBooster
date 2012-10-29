@@ -14,13 +14,13 @@ describe(@"FCColorPickerCell", ^{
   beforeEach(^{
     [[NSUserDefaults standardUserDefaults] setColor:[UIColor blueColor] forKey:preferenceKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    model = [[FCColorPickerCell alloc] initWithReuseIdentifier:@"r"
-                                                     labelText:@"Color Preference"
-                                                        andKey:preferenceKey];
+    model = [[FCColorPickerCell alloc] init];
+    model.key = preferenceKey;
   });
   
-  describe(@"init", ^(){
+  describe(@"Label Text", ^(){
     it(@"should show the correct name in its label", ^(){
+      model.labelText = @"Color Preference";
       [model.textLabel.text isEqualToString:@"Color Preference"] should be_truthy;
       
     });

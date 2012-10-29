@@ -13,13 +13,13 @@ describe(@"FCSwitchCell", ^{
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:preferenceKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    model = [[FCSwitchCell alloc] initWithReuseIdentifier:@"testSwitchCell"
-                                                labelText:@"Preference Name"
-                                                   andKey:preferenceKey];
+    model = [[FCSwitchCell alloc] init];
+    model.key = preferenceKey;
   });
   
   describe(@"init", ^(){
     it(@"should show the correct name in its label", ^(){
+      model.labelText = @"Preference Name";
       [model.textLabel.text isEqualToString:@"Preference Name"] should be_truthy;
       
     });

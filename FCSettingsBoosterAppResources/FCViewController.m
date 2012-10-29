@@ -20,27 +20,12 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+  [self configure:@[@{@"sectionName":@"Basic Settings",
+   @"settings":@[
+   @{@"type":@"FCSwitchCell", @"name":@"The Preference", @"key":@"booleanPref"},
+   @{@"type":@"FCColorPickerCell", @"name":@"The Color", @"key":@"colorPref"},
+   ]}]];
 }
 
-- (void)didReceiveMemoryWarning
-{
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 2;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.row == 1) {
-    return [[FCSwitchCell alloc] initWithReuseIdentifier:@"b" labelText:@"My Preference" andKey:@"preferenceKey"];
-  } else {
-    return [[FCColorPickerCell alloc] initWithReuseIdentifier:@"b" labelText:@"My Preference" andKey:@"colorPreferenceKey"];
-  }
-  
-}
 
 @end

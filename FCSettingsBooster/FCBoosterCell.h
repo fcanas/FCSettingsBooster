@@ -11,6 +11,7 @@
 @protocol FCBoosterCell <NSObject>
 
 @property (nonatomic, retain) NSString *key;
+@property (nonatomic, retain) NSString *labelText;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier labelText:(NSString *)label andKey:(NSString *) key;
 

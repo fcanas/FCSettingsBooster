@@ -13,6 +13,7 @@
 
 @interface FCColorPickerCell () {
   NSString *_key;
+  NSString *_labelText;
 }
 
 @end
@@ -20,12 +21,13 @@
 @implementation FCColorPickerCell
 
 @synthesize key=_key;
+@synthesize labelText=_labelText;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
-    // Initialization code
+    [self setupAccessoryView];
   }
   return self;
 }
@@ -34,10 +36,23 @@
   self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
   if (self) {
     self.textLabel.text = label;
-    self.accessoryView = [[FCColorSwatchView alloc] initWithFrame:CGRectMake(0, 0, 79, 27)];
-    ((FCColorSwatchView *)self.accessoryView).color = [[NSUserDefaults standardUserDefaults] colorForKey:_key];
+    self.key = key;
+
   }
   return self;
+}
+
+- (void)setupAccessoryView {
+  self.accessoryView = [[FCColorSwatchView alloc] initWithFrame:CGRectMake(0, 0, 79, 27)];
+}
+
+- (void)setKey:(NSString *)key {
+  _key = key;
+  ((FCColorSwatchView *)self.accessoryView).color = [[NSUserDefaults standardUserDefaults] colorForKey:_key];
+}
+
+- (void)setLabelText:(NSString *)labelText {
+  self.textLabel.text = labelText;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
