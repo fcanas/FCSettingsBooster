@@ -12,5 +12,6 @@
 @interface FCSwitchCell : UITableViewCell <FCBoosterCell>
 
 @property BOOL value;
+@property (nonatomic, copy) void (^valueChanged)(BOOL value);
 
 @end

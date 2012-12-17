@@ -70,6 +70,9 @@
 - (void)setValue:(BOOL)newValue {
   _theSwitch.on = newValue;
   [self setDefaults];
+  if (_valueChanged) {
+    _valueChanged(newValue);
+  }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {}

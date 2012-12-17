@@ -60,6 +60,23 @@ describe(@"FCSwitchCell", ^{
     
   });
   
+  describe(@"valueChanged block", ^{
+    it(@"should be called when the value changes", ^{
+      __block BOOL probe = NO;
+      model.valueChanged = ^(BOOL value){
+        probe = value;
+      };
+      
+      model.value = YES;
+      
+      probe should be_truthy;
+      
+      model.value = NO;
+      
+      probe should_not be_truthy;
+    });
+  });
+  
 });
 
 SPEC_END
