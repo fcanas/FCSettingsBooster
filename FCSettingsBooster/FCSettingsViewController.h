@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <iOS-Color-Picker/FCColorPickerViewController.h>
 
-@interface FCSettingsViewController : UITableViewController <ColorPickerViewControllerDelegate>
+#import "FCBoosterCell.h"
 
-@property (nonatomic, strong) NSString *controllerKey;
+@interface FCSettingsViewController : UITableViewController <ColorPickerViewControllerDelegate,FCSettingsBoosterController>
 
 - (id)initWithConfiguration:(NSArray *) config andStyle:(UITableViewStyle)style;
 

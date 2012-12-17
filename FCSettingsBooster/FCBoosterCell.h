@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FCSettingsViewController.h"
+
+@protocol FCSettingsBoosterController <NSObject>
+
+@property (nonatomic, strong) NSString *controllerKey;
+
+@end
+
 
 @protocol FCBoosterCell <NSObject>
 
@@ -18,6 +24,6 @@
 
 @optional
 
-- (id)valueControllerForSettingsController:(FCSettingsViewController *)settingsController;
+- (id)valueControllerForSettingsController:(id<FCSettingsBoosterController>)settingsController;
 
 @end

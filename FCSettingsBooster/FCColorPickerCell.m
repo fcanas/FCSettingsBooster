@@ -56,19 +56,14 @@
   self.textLabel.text = labelText;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-//  [super setSelected:selected animated:animated];
-}
-
-- (id)valueControllerForSettingsController:(FCSettingsViewController *)settingsController {
+- (id)valueControllerForSettingsController:(id<FCSettingsBoosterController>)settingsController {
   FCColorPickerViewController *c = [[FCColorPickerViewController alloc] initWithNibName:@"FCColorPickerViewController" bundle:nil] ;
   
   settingsController.controllerKey = self.key;
   c.color = [[NSUserDefaults standardUserDefaults] colorForKey:self.key];
   
   if ([settingsController conformsToProtocol:@protocol(ColorPickerViewControllerDelegate)]) {
-    c.delegate = settingsController;
+    c.delegate = (id<ColorPickerViewControllerDelegate>)settingsController;
   }
   
   return c;

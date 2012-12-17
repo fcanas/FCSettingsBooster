@@ -11,11 +11,15 @@
 #import "FCColorPickerCell.h"
 #import "NSUserDefaults+UIColor.h"
 
-@interface FCSettingsViewController ()
+@interface FCSettingsViewController () {
+  NSString *controllerKey;
+}
 @property (nonatomic, strong) NSArray *configuration;
 @end
 
 @implementation FCSettingsViewController
+
+@synthesize controllerKey=_controllerKey;
 
 - (id)initWithConfiguration:(NSArray *) config andStyle:(UITableViewStyle)style {
   self = [super initWithStyle:style];
