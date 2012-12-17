@@ -61,6 +61,7 @@
 - (void)setDefaults {
   [[NSUserDefaults standardUserDefaults] setBool:_theSwitch.on forKey:_key];
   [[NSUserDefaults standardUserDefaults] synchronize];
+  [self completion];
 }
 
 - (BOOL)value {
@@ -70,11 +71,15 @@
 - (void)setValue:(BOOL)newValue {
   _theSwitch.on = newValue;
   [self setDefaults];
-  if (_valueChanged) {
-    _valueChanged(newValue);
-  }
+  [self completion];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {}
+
+- (void)completion {
+  if (_valueChanged) {
+    _valueChanged(_theSwitch.on);
+  }
+}
 
 @end
