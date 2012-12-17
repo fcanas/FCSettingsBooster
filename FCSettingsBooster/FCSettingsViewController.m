@@ -13,7 +13,6 @@
 
 @interface FCSettingsViewController ()
 @property (nonatomic, strong) NSArray *configuration;
-@property (nonatomic, strong) NSString *controllerKey;
 @end
 
 @implementation FCSettingsViewController
@@ -70,11 +69,22 @@
 
 #pragma mark - Table view delegate
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+  UITableViewCell<FCBoosterCell> *cell = (UITableViewCell<FCBoosterCell> *)[tableView cellForRowAtIndexPath:indexPath];
+  if ([cell conformsToProtocol:@protocol(FCBoosterCell)]) {
+    if ([cell respondsToSelector:@selector(valueControllerForSettingsController:)]) {
+      return YES;
+    }
+  }
+  return NO;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSDictionary *cellConfiguration = [self cellConfigurationAtIndexPath:indexPath];
-  NSString *cellClass = cellConfiguration[@"type"];
-  if ([cellClass isEqualToString:@"FCColorPickerCell"]) {
-    [self pushColorPickerForKey:cellConfiguration[@"key"]];
+  UITableViewCell<FCBoosterCell> *cell = (UITableViewCell<FCBoosterCell> *)[tableView cellForRowAtIndexPath:indexPath];
+  if ([cell conformsToProtocol:@protocol(FCBoosterCell)]) {
+    if ([cell respondsToSelector:@selector(valueControllerForSettingsController:)]) {
+      [self presentViewController:[cell valueControllerForSettingsController:self] animated:YES completion:nil];
+    }
   }
 }
 
@@ -82,17 +92,6 @@
 
 - (NSDictionary *)cellConfigurationAtIndexPath:(NSIndexPath *)indexPath {
   return ((NSArray *)((NSDictionary *)_configuration[indexPath.section])[@"settings"])[indexPath.row];
-}
-
-#pragma mark - Picker Methods
-
-- (void)pushColorPickerForKey:(NSString *)key {
-  self.controllerKey = key;
-  
-  FCColorPickerViewController *colorPicker = [[FCColorPickerViewController alloc] initWithNibName:@"FCColorPickerViewController" bundle:nil];
-  colorPicker.color = [[NSUserDefaults standardUserDefaults] colorForKey:key];
-  colorPicker.delegate = self;
-  [self presentViewController:colorPicker animated:YES completion:nil];
 }
 
 #pragma mark - Color Picker Delegate Methods

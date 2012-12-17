@@ -106,9 +106,9 @@ describe(@"FCSettingsViewController", ^{
       
       [model tableView:model.tableView didSelectRowAtIndexPath:firstIndexPath];
   
-      while (model.waitingForUI)
-      [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                               beforeDate:[NSDate distantFuture]];
+//      while (model.waitingForUI)
+//      [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+//                               beforeDate:[NSDate distantFuture]];
 //      while (model.waitingForUI)
 //        [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
       

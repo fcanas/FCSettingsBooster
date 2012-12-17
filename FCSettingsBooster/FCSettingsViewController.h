@@ -11,6 +11,8 @@
 
 @interface FCSettingsViewController : UITableViewController <ColorPickerViewControllerDelegate>
 
+@property (nonatomic, strong) NSString *controllerKey;
+
 - (id)initWithConfiguration:(NSArray *) config andStyle:(UITableViewStyle)style;
 
 - (void)configure:(NSArray *) config;

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FCSettingsViewController.h"
 
 @protocol FCBoosterCell <NSObject>
 
@@ -14,5 +15,9 @@
 @property (nonatomic, retain) NSString *labelText;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier labelText:(NSString *)label andKey:(NSString *) key;
+
+@optional
+
+- (id)valueControllerForSettingsController:(FCSettingsViewController *)settingsController;
 
 @end
