@@ -42,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		D5C3EEBDDCA944F9B21D85B8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E79C0DA7167E8DD400B805D8 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E7B46A551634F2F80057592F /* Specs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Specs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B46A5C1634F2F80057592F /* Specs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Specs-Info.plist"; sourceTree = "<group>"; };
 		E7B46A5E1634F2F80057592F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 		E7B58C5E1634D98C00967966 = {
 			isa = PBXGroup;
 			children = (
+				E79C0DA7167E8DD400B805D8 /* Podfile */,
 				E7B46A8916365AF40057592F /* QuartzCore.framework */,
 				E7B58CB01634DA2000967966 /* FCSettingsBooster */,
 				E7B58C731634D98C00967966 /* FCSettingsBoosterAppResources */,
@@ -223,6 +225,7 @@
 				E7B46A521634F2F80057592F /* Frameworks */,
 				E7B46A531634F2F80057592F /* Resources */,
 				E7B46A88163627AD0057592F /* ShellScript */,
+				E79C0DB5167E9ED800B805D8 /* Copy Pod -- Manual */,
 			);
 			buildRules = (
 			);
@@ -312,6 +315,20 @@
 			inputPaths = (
 			);
 			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+		E79C0DB5167E9ED800B805D8 /* Copy Pod -- Manual */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pod -- Manual";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
