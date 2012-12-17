@@ -60,6 +60,7 @@
   
   settingsController.controllerKey = self.key;
   c.color = [[NSUserDefaults standardUserDefaults] colorForKey:self.key];
+  c.modalPresentationStyle = UIModalPresentationCurrentContext;
   
   if ([settingsController conformsToProtocol:@protocol(ColorPickerViewControllerDelegate)]) {
     c.delegate = (id<ColorPickerViewControllerDelegate>)settingsController;
