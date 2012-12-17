@@ -6,8 +6,9 @@ Giving a head start on implementing a settings view in iOS
 
 * Functional
 	* Boolean preferences with switches
-* In Progress
 	* Color Picker using [iOS Color Picker](https://github.com/fcanas/ios-color-picker)
+* In Progress
+	* ?
 * Planned
 	* Font Picker
 	* Easy compatibility with custom cells / preferences

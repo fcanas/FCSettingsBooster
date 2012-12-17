@@ -1,6 +1,7 @@
 #import "FCSettingsViewController.h"
 #import "FCSwitchCell.h"
 #import "FCColorPickerCell.h"
+#import <iOS-Color-Picker/FCColorPickerViewController.h>
 
 using namespace Cedar::Matchers;
 using namespace Cedar::Doubles;
@@ -11,25 +12,27 @@ describe(@"FCSettingsViewController", ^{
   __block FCSettingsViewController *model;
   __block NSArray *settings;
   __block UITableViewCell<FCBoosterCell> *cell;
+  __block NSIndexPath *firstIndexPath;
   
   beforeEach(^{
     model = [[FCSettingsViewController alloc] init];
+    firstIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
   });
   
   describe(@"initialize with configuration", ^(){
     
     beforeEach(^{
       settings = @[
-      @{@"sectionName": @"Basic",
-      @"settings":
-      @[
-      @{@"type":@"FCSwitchCell", @"name":@"The Preference", @"key":@"pref"},
-      @"two"
-      ]},
-      
-      @{@"sectionName": @"Advanced",
-      @"settings":
-      @[@"one", @"two", @"three"]},
+        @{@"sectionName": @"Basic",
+        @"settings": @[
+          @{@"type":@"FCSwitchCell", @"name":@"The Preference", @"key":@"pref"},
+          @"two"
+        ]},
+        
+        @{@"sectionName": @"Advanced",
+        @"settings": @[
+          @"one", @"two", @"three"
+        ]},
       ];
       model = [[FCSettingsViewController alloc] initWithConfiguration:settings andStyle:UITableViewStyleGrouped];
     });
@@ -60,7 +63,7 @@ describe(@"FCSettingsViewController", ^{
       @[@{@"type":@"FCSwitchCell", @"name":@"The Preference", @"key":@"pref"}]}
       ];
       model = [[FCSettingsViewController alloc] initWithConfiguration:settings andStyle:UITableViewStyleGrouped];
-      cell = (UITableViewCell<FCBoosterCell> *)[model tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+      cell = (UITableViewCell<FCBoosterCell> *)[model tableView:model.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     });
     
     it(@"should make switch cells", ^(){
@@ -84,7 +87,7 @@ describe(@"FCSettingsViewController", ^{
       @[@{@"type":@"FCColorPickerCell", @"name":@"The Preference", @"key":@"pref"}]}
       ];
       model = [[FCSettingsViewController alloc] initWithConfiguration:settings andStyle:UITableViewStyleGrouped];
-      cell = (UITableViewCell<FCBoosterCell> *)[model tableView:nil cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+      cell = (UITableViewCell<FCBoosterCell> *)[model tableView:model.tableView cellForRowAtIndexPath:firstIndexPath];
     });
     
     it(@"should make color cells", ^(){
@@ -98,6 +101,23 @@ describe(@"FCSettingsViewController", ^{
     it(@"should have the correct key", ^(){
       [cell.key isEqualToString:@"pref"] should be_truthy;
     });
+    
+    xit(@"should trigger a color view controller when tapped", ^(){
+      
+      [model tableView:model.tableView didSelectRowAtIndexPath:firstIndexPath];
+  
+      while (model.waitingForUI)
+      [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                               beforeDate:[NSDate distantFuture]];
+//      while (model.waitingForUI)
+//        [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+      
+      FCColorPickerViewController *colorPicker = (FCColorPickerViewController *)model.presentedViewController;
+      
+      colorPicker should be_instance_of([FCColorPickerViewController class]);
+      [colorPicker delegate] should equal(model);
+    });
+    
   });
   
 });

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iOS-Color-Picker/FCColorPickerViewController.h>
 
-@interface FCSettingsViewController : UITableViewController
+@interface FCSettingsViewController : UITableViewController <ColorPickerViewControllerDelegate>
 
 - (id)initWithConfiguration:(NSArray *) config andStyle:(UITableViewStyle)style;
 
