@@ -7,6 +7,8 @@ Its only benefit over the standard [settings bundle](http://developer.apple.com/
 
 ## Status
 
+FCSettingsBooster is no longer under active development. Unless the features that are currently built are exactly what you need to use, I do not suggest using it.
+
 The individual components listed as "functional" below are ready for use. 
 The architecture and code of a coordinating Settings View Controller is majorly in flux and I suggest nobody use it for the time being.
 
