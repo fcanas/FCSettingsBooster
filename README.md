@@ -1,4 +1,8 @@
-# FCSettingsBooster
+# ~~FCSettingsBooster~~
+
+This project is deprecated. I'm not developing it any more, and it was probably ill-conceived to begin with.
+
+---
 
 A head start on implementing a settings view in iOS
 
